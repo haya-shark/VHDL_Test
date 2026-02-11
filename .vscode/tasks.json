@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Verilog Build",
+            "type": "shell",
+            "command": "iverilog",
+            "args": [
+                "-o",
+                "${fileBasenameNoExtension}.out",
+                "src/${fileBasenameNoExtension}.v",
+                "tb/${fileBasenameNoExtension}_tb.v"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Verilog Run",
+            "type": "shell",
+            "command": "vvp",
+            "args": [
+                "${fileBasenameNoExtension}.out"
+            ],
+            "dependsOn": [
+                "Verilog Build"
+            ],
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
+}
